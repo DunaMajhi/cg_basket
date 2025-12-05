@@ -1,0 +1,28 @@
+[
+  {
+    "_id": "1",
+    "slug": "black-rice-1kg",
+    "name": "Black Rice (Karhani)",
+    "price": 180,
+    "unit": "kg",
+    "weightValue": 1,
+    "category": "Grains",
+    "stock": 20,
+    "farmerName": "Ramesh Netam",
+    "location": "Bastar",
+    "description": "Premium black rice from the forests of Bastar"
+  },
+  {
+    "_id": "2",
+    "slug": "red-rice-1kg",
+    "name": "Red Rice (Gahat)",
+    "price": 150,
+    "unit": "kg",
+    "weightValue": 1,
+    "category": "Grains",
+    "stock": 25,
+    "farmerName": "Asha Kumari",
+    "location": "Rajnandgaon",
+    "description": "Red rice rich in minerals"
+  }
+]

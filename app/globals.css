@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import the Tribal Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Eczar:wght@400;600;700&family=Lato:wght@400;700&display=swap');
+
+:root {
+  --font-eczar: 'Eczar', serif;
+  --font-lato: 'Lato', sans-serif;
+}
+
+body {
+  @apply bg-kraft-200 text-tribal-charcoal font-body;
+  /* CSS Noise generator for paper texture */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Custom Component for the "Window" Pouch effect */
+.pouch-card {
+  @apply bg-kraft-100 border border-kraft-800/20 rounded-lg shadow-pouch overflow-hidden;
+}
+
+/* Layout helpers */
+.container {
+  @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.grid-auto {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+}
+
+.grid-auto-4 {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+/* Better typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-eczar), ui-serif, Georgia, 'Times New Roman', Times, serif;
+  color: #2B2B2B;
+}
+
+p, li, a {
+  font-family: var(--font-lato), system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Hero */
+.site-hero {
+  @apply rounded-xl bg-gradient-to-br from-tribal-mahua/15 via-kraft-100 to-tribal-turmeric/10 p-8 md:p-12 mb-8 border border-kraft-800/20 shadow-md;
+}
+.hero-title {
+  @apply text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-tribal-mahua leading-tight tracking-tight;
+}
+.hero-sub {
+  @apply text-lg md:text-xl text-stone-700 mt-4 max-w-2xl leading-relaxed;
+}
+
+.hero-cta {
+  @apply mt-6 inline-flex items-center gap-2 btn-primary text-base;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-tribal-forest text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-tribal-forest/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0 active:shadow-md cursor-pointer;
+}
+
+.btn-primary:disabled {
+  @apply opacity-50 cursor-not-allowed hover:bg-tribal-forest/70;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 bg-tribal-clay text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-tribal-clay/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 active:translate-y-0 active:shadow-md cursor-pointer;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 bg-transparent border-2 border-tribal-forest text-tribal-forest font-semibold py-2 px-4 rounded-lg hover:bg-tribal-forest/5 transition-all duration-200 cursor-pointer;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 bg-transparent text-tribal-charcoal py-2 px-3 rounded-lg hover:bg-kraft-800/10 transition-all duration-200 cursor-pointer;
+}
+
+/* Product Badges */
+.product-badge {
+  @apply inline-flex items-center gap-1 text-xs font-bold uppercase bg-tribal-turmeric/90 text-tribal-charcoal px-3 py-1.5 rounded-full shadow-sm;
+}
+
+.product-badge-secondary {
+  @apply inline-flex items-center gap-1 text-xs font-bold uppercase bg-tribal-clay/90 text-white px-3 py-1.5 rounded-full shadow-sm;
+}
+
+/* Card tweaks */
+.card-compact {
+  @apply bg-white rounded-lg shadow-sm overflow-hidden border border-kraft-800/10 hover:shadow-md transition-shadow duration-300;
+}
+
+.card-elevated {
+  @apply bg-white rounded-lg shadow-lg overflow-hidden border border-kraft-800/10 hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+}
+
+/* Utilities for small screens */
+@media (max-width: 640px) {
+  .hero-title { @apply text-3xl; }
+}
+
+/* Accessibility focus states */
+:focus {
+  outline: 3px solid rgba(51, 105, 30, 0.12);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions and animations */
+@layer utilities {
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .group-hover-translate {
+    @apply group-hover:-translate-y-1 transition-transform duration-300;
+  }
+  
+  .link-underline {
+    @apply relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-tribal-clay after:transition-all after:duration-300 hover:after:w-full;
+  }
+}
+
+/* Global link hover effects */
+a:not([class*="btn"]):not([class*="link-"]) {
+  @apply text-tribal-forest hover:text-tribal-clay transition-colors duration-200;
+}
+
+/* Better scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(141, 110, 99, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(141, 110, 99, 0.5);
+}
