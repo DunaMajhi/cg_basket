@@ -3,8 +3,11 @@ import Link from 'next/link';
 // Assuming you are using Lucide React for icons (standard in Next.js)
 // npm install lucide-react
 import { ShoppingBag, Leaf, AlertCircle } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 const ProductCard = ({ product }) => {
+  const { addToCart } = useCart();
+  
   // Destructure for cleaner code
   const { 
     slug, 
@@ -81,7 +84,7 @@ const ProductCard = ({ product }) => {
           {stock > 0 ? (
             <button 
               className="inline-flex items-center justify-center gap-2 bg-green-700 text-white font-semibold py-2 px-3 rounded-lg shadow-md hover:bg-green-600 hover:shadow-lg transition-all duration-200"
-              onClick={() => alert(`Added ${name} to cart`)}
+              onClick={() => addToCart(product, 1)}
             >
               <ShoppingBag size={16} />
               <span>Add</span>

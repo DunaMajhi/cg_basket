@@ -8,21 +8,115 @@
     "weightValue": 1,
     "category": "Grains",
     "stock": 20,
-    "farmerName": "Ramesh Netam",
-    "location": "Bastar",
+    "farmerDetails": {
+      "name": "Ramesh Netam",
+      "location": "Bastar"
+    },
+    "images": [
+      {
+        "url": "/images/black-rice.jpg"
+      }
+    ],
     "description": "Premium black rice from the forests of Bastar"
   },
   {
     "_id": "2",
     "slug": "red-rice-1kg",
-    "name": "Red Rice (Gahat)",
-    "price": 150,
+    "name": "Red Rice",
+    "price": 120,
     "unit": "kg",
     "weightValue": 1,
     "category": "Grains",
-    "stock": 25,
-    "farmerName": "Asha Kumari",
-    "location": "Rajnandgaon",
+    "stock": 50,
+    "farmerDetails": {
+      "name": "Sunita Devi",
+      "location": "Dantewada"
+    },
+    "images": [
+      {
+        "url": "/images/red-rice.jpg"
+      }
+    ],
     "description": "Red rice rich in minerals"
+  },
+  {
+    "_id": "3",
+    "slug": "mahua-honey-500g",
+    "name": "Mahua Honey",
+    "price": 220,
+    "unit": "g",
+    "weightValue": 500,
+    "category": "Forest Produce",
+    "stock": 15,
+    "farmerDetails": {
+      "name": "Tribal Co-op",
+      "location": "Narayanpur"
+    },
+    "images": [
+      {
+        "url": "/images/honey.jpg"
+      }
+    ],
+    "description": "Pure Mahua honey collected from forest flowers"
+  },
+  {
+    "_id": "4",
+    "slug": "chironjee-250g",
+    "name": "Chironjee Seeds",
+    "price": 260,
+    "unit": "g",
+    "weightValue": 250,
+    "category": "Forest Produce",
+    "stock": 10,
+    "farmerDetails": {
+      "name": "Village SHG",
+      "location": "Surguja"
+    },
+    "images": [
+      {
+        "url": "/images/chironjee.jpg"
+      }
+    ],
+    "description": "Premium Chironjee seeds from Surguja forests"
+  },
+  {
+    "_id": "5",
+    "slug": "turmeric-powder-500g",
+    "name": "Turmeric Powder",
+    "price": 90,
+    "unit": "g",
+    "weightValue": 500,
+    "category": "Spices",
+    "stock": 100,
+    "farmerDetails": {
+      "name": "Anjali Farm",
+      "location": "Raipur"
+    },
+    "images": [
+      {
+        "url": "/images/turmeric.jpg"
+      }
+    ],
+    "description": "Organic turmeric powder from local farms"
+  },
+  {
+    "_id": "6",
+    "slug": "papad-packet-200g",
+    "name": "Handmade Papad",
+    "price": 60,
+    "unit": "g",
+    "weightValue": 200,
+    "category": "Snacks",
+    "stock": 40,
+    "farmerDetails": {
+      "name": "Mahila Samiti",
+      "location": "Bilaspur"
+    },
+    "images": [
+      {
+        "url": "/images/papad.jpg"
+      }
+    ],
+    "description": "Traditional handmade papad by women's collective"
   }
 ]

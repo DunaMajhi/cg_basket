@@ -1,161 +1,132 @@
-'use client';
+import Link from 'next/link';
+import { ArrowRight, ShoppingBag, Heart, Users } from 'lucide-react';
 
-import { useState } from 'react';
-import ProductCard from '@/components/ProductCard';
-import { Filter, SlidersHorizontal } from 'lucide-react';
-
-// 1. STATIC DATA (No Fetching = No Crashing)
-const INITIAL_PRODUCTS = [
-  {
-    _id: '1',
-    slug: 'black-rice-1kg',
-    name: 'Black Rice (Karhani)',
-    price: 180,
-    unit: 'kg',
-    weightValue: 1,
-    category: 'Grains',
-    stock: 20,
-    images: [{ url: '/images/black-rice.jpg' }],
-    farmerDetails: { name: 'Ramesh Netam', location: 'Bastar' }
-  },
-  {
-    _id: '2',
-    slug: 'red-rice-1kg',
-    name: 'Red Rice',
-    price: 120,
-    unit: 'kg',
-    weightValue: 1,
-    category: 'Grains',
-    stock: 50,
-    images: [{ url: '/images/red-rice.jpg' }],
-    farmerDetails: { name: 'Sunita Devi', location: 'Dantewada' }
-  },
-  {
-    _id: '3',
-    slug: 'mahua-honey-500g',
-    name: 'Mahua Honey',
-    price: 220,
-    unit: 'g',
-    weightValue: 500,
-    category: 'Forest Produce',
-    stock: 15,
-    images: [{ url: '/images/honey.jpg' }],
-    farmerDetails: { name: 'Tribal Co-op', location: 'Narayanpur' }
-  },
-  {
-    _id: '4',
-    slug: 'chironjee-250g',
-    name: 'Chironjee Seeds',
-    price: 260,
-    unit: 'g',
-    weightValue: 250,
-    category: 'Forest Produce',
-    stock: 10,
-    images: [{ url: '/images/chironjee.jpg' }],
-    farmerDetails: { name: 'Village SHG', location: 'Surguja' }
-  },
-  {
-    _id: '5',
-    slug: 'turmeric-powder-500g',
-    name: 'Turmeric Powder',
-    price: 90,
-    unit: 'g',
-    weightValue: 500,
-    category: 'Spices',
-    stock: 100,
-    images: [{ url: '/images/turmeric.jpg' }],
-    farmerDetails: { name: 'Anjali Farm', location: 'Raipur' }
-  },
-  {
-    _id: '6',
-    slug: 'papad-packet-200g',
-    name: 'Handmade Papad',
-    price: 60,
-    unit: 'g',
-    weightValue: 200,
-    category: 'Snacks',
-    stock: 40,
-    images: [{ url: '/images/papad.jpg' }],
-    farmerDetails: { name: 'Mahila Samiti', location: 'Bilaspur' }
-  }
-];
-
-const CATEGORIES = ['All', 'Grains', 'Forest Produce', 'Spices', 'Snacks'];
-
-export default function ShopPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
-  
-  // Filtering logic
-  const filteredProducts = activeCategory === 'All' 
-    ? INITIAL_PRODUCTS 
-    : INITIAL_PRODUCTS.filter(p => p.category === activeCategory);
-
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-kraft-200">
       
-      {/* HEADER */}
-      <div className="bg-tribal-mahua text-kraft-100 py-12 px-6 shadow-md relative overflow-hidden">
+      {/* HERO SECTION */}
+      <div className="bg-tribal-mahua text-kraft-100 py-20 px-6 shadow-md relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold mb-2">
-            The Chhattisgarh Basket
-          </h1>
-          <p className="text-kraft-200 text-lg font-body max-w-2xl">
-            Authentic tribal produce directly from the farmers of Bastar and Surguja.
-          </p>
+          <div className="max-w-3xl">
+            <h1 className="font-heading text-5xl md:text-6xl font-bold mb-6">
+              Welcome to Chhattisgarh Basket 🧺
+            </h1>
+            <p className="text-kraft-200 text-xl font-body mb-8 leading-relaxed">
+              Authentic tribal produce directly from the farmers of Bastar and Surguja. 
+              Support local communities while enjoying nature's finest products.
+            </p>
+            <Link 
+              href="/shop" 
+              className="inline-flex items-center gap-2 bg-tribal-turmeric text-tribal-charcoal px-8 py-4 rounded-lg font-bold text-lg hover:bg-tribal-clay hover:text-kraft-100 transition-all duration-200 shadow-lg"
+            >
+              Shop Now <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col md:flex-row gap-8">
-        
-        {/* SIDEBAR */}
-        <aside className="w-full md:w-64 flex-shrink-0">
-          <div className="bg-kraft-100 p-6 rounded-lg shadow-pouch border border-kraft-800/10 sticky top-4">
-            <div className="flex items-center gap-2 mb-4 text-tribal-mahua">
-              <Filter size={20} />
-              <h2 className="font-heading text-xl font-bold">Filters</h2>
+      {/* FEATURES SECTION */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <div className="bg-kraft-100 p-8 rounded-lg shadow-pouch border border-kraft-800/10 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-tribal-turmeric rounded-full mb-4">
+              <ShoppingBag size={32} className="text-tribal-charcoal" />
             </div>
-            
-            <div className="space-y-2">
-              <h3 className="font-bold text-stone-600 text-sm uppercase tracking-wider mb-2">Categories</h3>
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`w-full text-left px-3 py-2 rounded transition-colors text-sm font-medium ${
-                    activeCategory === cat 
-                      ? 'bg-tribal-turmeric text-tribal-charcoal shadow-sm' 
-                      : 'text-stone-600 hover:bg-kraft-200'
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-          </div>
-        </aside>
-
-        {/* GRID */}
-        <main className="flex-grow">
-          <div className="flex justify-between items-center mb-6">
-            <p className="text-stone-500 text-sm">
-              Showing <span className="font-bold text-tribal-charcoal">{filteredProducts.length}</span> products
+            <h3 className="font-heading text-2xl font-bold text-tribal-mahua mb-3">
+              Authentic Products
+            </h3>
+            <p className="text-stone-600 font-body">
+              100% genuine tribal produce sourced directly from local farmers and artisans.
             </p>
           </div>
 
-          {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product._id} product={product} />
-              ))}
+          <div className="bg-kraft-100 p-8 rounded-lg shadow-pouch border border-kraft-800/10 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-tribal-clay rounded-full mb-4">
+              <Heart size={32} className="text-kraft-100" />
             </div>
-          ) : (
-            <div className="text-center py-20">
-              <h3 className="text-xl font-heading text-stone-500">No products found.</h3>
-            </div>
-          )}
-        </main>
+            <h3 className="font-heading text-2xl font-bold text-tribal-mahua mb-3">
+              Support Communities
+            </h3>
+            <p className="text-stone-600 font-body">
+              Your purchase directly supports tribal communities and preserves traditional practices.
+            </p>
+          </div>
 
+          <div className="bg-kraft-100 p-8 rounded-lg shadow-pouch border border-kraft-800/10 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-tribal-mahua rounded-full mb-4">
+              <Users size={32} className="text-kraft-100" />
+            </div>
+            <h3 className="font-heading text-2xl font-bold text-tribal-mahua mb-3">
+              Fair Trade
+            </h3>
+            <p className="text-stone-600 font-body">
+              Fair prices ensure farmers receive just compensation for their hard work.
+            </p>
+          </div>
+
+        </div>
       </div>
+
+      {/* CATEGORIES SECTION */}
+      <div className="bg-kraft-100 py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="font-heading text-4xl font-bold text-tribal-mahua text-center mb-12">
+            Explore Our Categories
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            
+            <Link href="/shop" className="bg-kraft-200 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 text-center border border-kraft-800/10 hover:border-tribal-clay group">
+              <div className="text-4xl mb-3">🌾</div>
+              <h3 className="font-heading text-xl font-bold text-tribal-mahua group-hover:text-tribal-clay">
+                Grains
+              </h3>
+            </Link>
+
+            <Link href="/shop" className="bg-kraft-200 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 text-center border border-kraft-800/10 hover:border-tribal-clay group">
+              <div className="text-4xl mb-3">🍯</div>
+              <h3 className="font-heading text-xl font-bold text-tribal-mahua group-hover:text-tribal-clay">
+                Forest Produce
+              </h3>
+            </Link>
+
+            <Link href="/shop" className="bg-kraft-200 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 text-center border border-kraft-800/10 hover:border-tribal-clay group">
+              <div className="text-4xl mb-3">🌶️</div>
+              <h3 className="font-heading text-xl font-bold text-tribal-mahua group-hover:text-tribal-clay">
+                Spices
+              </h3>
+            </Link>
+
+            <Link href="/shop" className="bg-kraft-200 p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-200 text-center border border-kraft-800/10 hover:border-tribal-clay group">
+              <div className="text-4xl mb-3">🥘</div>
+              <h3 className="font-heading text-xl font-bold text-tribal-mahua group-hover:text-tribal-clay">
+                Snacks
+              </h3>
+            </Link>
+
+          </div>
+        </div>
+      </div>
+
+      {/* CTA SECTION */}
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="bg-tribal-mahua text-kraft-100 p-12 rounded-lg shadow-xl text-center">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
+            Ready to Experience Authentic Tribal Products?
+          </h2>
+          <p className="text-kraft-200 text-lg mb-8 max-w-2xl mx-auto">
+            Browse our collection of handpicked products and bring home the essence of Chhattisgarh.
+          </p>
+          <Link 
+            href="/shop" 
+            className="inline-flex items-center gap-2 bg-tribal-turmeric text-tribal-charcoal px-8 py-4 rounded-lg font-bold text-lg hover:bg-kraft-100 transition-all duration-200 shadow-lg"
+          >
+            Start Shopping <ArrowRight size={20} />
+          </Link>
+        </div>
+      </div>
+
     </div>
   );
 }
